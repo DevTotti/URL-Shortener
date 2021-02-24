@@ -1,3 +1,4 @@
+# modules and libraries imports
 from flask import Flask,jsonify, request, redirect
 from flask_pymongo import PyMongo
 import string, random
@@ -7,6 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#app configuration
 app = Flask(__name__)
 app.config["MONGO_URI"] = os.environ["MONGO_URI"]
 mongo = PyMongo(app)
@@ -14,6 +16,7 @@ mongo = PyMongo(app)
 url_db = mongo.db.mainurl
 
 
+#function to generate a unique character to shorten the url
 def generate_encode():
     text = [''.join([random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for n in range(6)])]
     random.shuffle(text)
@@ -22,6 +25,7 @@ def generate_encode():
 
 
 
+#route for shortening the url
 @app.route("/", methods=["POST"])
 def shorten_url():
 
@@ -64,7 +68,7 @@ def shorten_url():
     return { "encoded_url": encoded_url }
 
 
-
+#route for accessing original url from shortened one
 @app.route("/<short_url>")
 def request_url(short_url):
     
