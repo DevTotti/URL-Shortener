@@ -31,6 +31,18 @@ pip install -r requirements.txt
 
 Now we are all set. There is a .env file that contains the credentials, you have to create a new env file or change the ```credentials.env``` to jus ```.env``` and set your credentials.
 
+## Run Tests
+First we have to run Unit test on the app to be sure everything works well 
+
+```
+python -m pytest
+```
+or simply
+
+```
+pytest
+```
+
 #Usage
 To run the server, by default the server runs on 5000 but you can change it to anything. You can do this by reading the comment in ```app.py``` line 89
 

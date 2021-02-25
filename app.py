@@ -58,7 +58,7 @@ def shorten_url():
             encoded_path = url_path
             exist = False
 
-    url_data = url_db.insert({
+    url_data = url_db.insert_one({
         "encoded": encoded_path,
         "original_url": original_url
     })
